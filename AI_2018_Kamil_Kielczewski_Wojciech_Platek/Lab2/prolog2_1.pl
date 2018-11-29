@@ -24,5 +24,6 @@ father(X,Y):-parent(X,Y),male(X).
 grandparent(X,Y):-parent(X,Z),parent(Z,Y).
 greatgrandparent(X,Y):-parent(X,A),parent(A,B),parent(B,Y).
 
+%ancestor(pat,X).
 ancestor(X,Y):-parent(X,Y).
 ancestor(X,Y):-parent(X,Z),ancestor(Z,Y).
