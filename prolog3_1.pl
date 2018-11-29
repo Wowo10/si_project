@@ -19,16 +19,16 @@ odd(s(s(X))):-odd(X).
 times(zero, X, zero):-isnumber(X).
 times(s(X), Y ,Z):-times(X, Y, Q), add(Y, Q, Z).
 
-quotient(_,zero,_).
+quotient(_,zero,_):-false.
 quotient(zero,X,zero):-isnumber(X).
 quotient(X,Y,s(Z)):-quotient(Q,Y,Z),add(Q,Y,X).
 
 less(zero,X):-isnumber(X),not(isequal(X,zero)).
 less(s(X),s(Y)):- less(X,Y).
 
-rem(_,zero,_):-false.
-rem(X,Y,X):-less(X,Y).
-rem(X,Y,R):-add(Y,Z,X),rem(Z,Y,R).
+remainder(_,zero,_):-false.
+remainder(X,Y,X):-less(X,Y).
+remainder(X,Y,R):-add(Y,Z,X),remainder(Z,Y,R).
 
 fact(zero,s(zero)).
 fact(s(X),Y):-fact(X, Z), times(s(X),Z,Y).
